@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Jeongman Park">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Eight Ball</title>
+  <style>
+    body {
+      font-family: 'Trebuchet MS', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #fffde7);
+      color: #00695c;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #container {
+      background: #ffffff;
+      border: 3px solid #004d40;
+      max-width: 500px;
+      width: 90%;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 0.5em;
+      font-size: 2em;
+      color: #00796b;
+    }
+
+    p {
+      margin: 0.5em 0;
+      line-height: 1.4;
+    }
+
+    #responseBox {
+      margin-top: 20px;
+      padding: 15px;
+      background: #b2dfdb;
+      border-radius: 8px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #004d40;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <h1>Magic Eight Ball</h1>
+    <p>Ask me a yes/no question.<br>Type <strong>stop</strong> when you’re done.</p>
+    <p id="responseBox">Waiting for your question...</p>
+
+    <script>
+      // array of eight possible responses
+      var responses = [
+        "Yeah, that sounds good.",
+        "Nope, I wouldn’t count on it.",
+        "Maybe later, try again.",
+        "Absolutely!",
+        "Not really.",
+        "Pretty likely.",
+        "Doubt it.",
+        "Sure, why not?"
+      ];
+
+      var question, idx, answer;
+
+      do {
+        // prompt user for a question
+        question = prompt("What’s your yes/no question? (or type 'stop')");
+
+        // exit on Cancel, empty, or 'stop'
+        if (!question || question.trim().toLowerCase() === "stop") {
+          document.getElementById("responseBox").innerText = "Alright, have a good one!";
+          break;
+        }
+
+        // pick random response
+        idx = Math.floor(Math.random() * responses.length);
+        answer = responses[idx];
+
+        // display response on page and in alert
+        document.getElementById("responseBox").innerText = "Magic Eight Ball: " + answer;
+        alert("Magic Eight Ball: " + answer);
+
+      } while (true);
+    </script>
+  </div>
+</body>
+
+</html>
